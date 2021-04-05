@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Node.js 12.x を利用
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: 依存ライブラリ収集
+        run: npm ci
+
+      - name: テスト実行
+        run: npm run test -- --coverage --watchAll=false
+
+      - name: ビルド
+        run: npm run build
+
+      - name: デプロイ
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

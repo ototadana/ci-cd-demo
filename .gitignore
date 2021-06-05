@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 /dependency-check-report.html
+
+cypress/videos/*

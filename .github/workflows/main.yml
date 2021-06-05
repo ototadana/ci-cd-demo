@@ -23,6 +23,14 @@ jobs:
       - name: テスト実行
         run: npm run test -- --coverage --watchAll=false
 
+      - name: E2E実行
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
       - name: ビルド
         if: ${{ github.ref == 'refs/heads/main' }}
         run: npm run build

@@ -20,8 +20,8 @@ jobs:
       - name: 依存ライブラリ収集
         run: npm ci
 
-      - name: テスト実行
-        run: npm run test -- --coverage --watchAll=false
+      - name: 単体テスト実行
+        run: npm run test -- --watchAll=false
 
       - name: E2E実行
         uses: cypress-io/github-action@v2
@@ -30,6 +30,12 @@ jobs:
           record: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: ビルド
         if: ${{ github.ref == 'refs/heads/main' }}

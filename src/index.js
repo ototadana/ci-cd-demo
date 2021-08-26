@@ -4,7 +4,7 @@ import './index.css';
 
 export function createMessage(name) {
   if (name) {
-    return `hello, ${name}.`;
+    return `Hello, ${name}.`;
   } else {
     return '';
   }

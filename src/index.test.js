@@ -6,6 +6,6 @@ import {createMessage} from './index';
 
 describe('createMessage', () => {
     test('nameが入力されている場合', () => {
-        expect(createMessage('Shoichi')).toBe('hello, Shoichi.');
+        expect(createMessage('Shoichi')).toBe('Hello, Shoichi.');
     });
 });

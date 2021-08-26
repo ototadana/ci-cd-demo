@@ -4,6 +4,6 @@ describe('E2Eテスト', () => {
     cy.visit('/')
     cy.get('input').type('Shoichi')
     cy.get('button').click()
-    cy.contains('hello, Shoichi.')
+    cy.contains('Hello, Shoichi.')
   })
 })

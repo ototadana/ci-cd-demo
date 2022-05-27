@@ -37,7 +37,7 @@
     ]
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.9.6",
+    "@cypress/code-coverage": "^3.10.0",
     "@cypress/instrument-cra": "^1.4.0",
     "cypress": "^7.4.0"
   }
